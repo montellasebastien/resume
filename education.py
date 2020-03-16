@@ -79,10 +79,11 @@ class Education:
 
         separate_line = Line(np.asarray([0, -5, 0]), np.asarray([0, 2, 0]))
         self.seb_resume.play(Write(separate_line),
-                  ApplyMethod(utbm_txt.move_to, utbm_txt.get_center() + 2 * UP),
-                  ApplyMethod(ncu_txt.move_to, ncu_txt.get_center() + 2 * UP),
-                  FadeOut(utbm_group),
-                  FadeOut(ncu_group))
+                             ApplyMethod(utbm_txt.move_to, utbm_txt.get_center() + 2 * UP),
+                             ApplyMethod(ncu_txt.move_to, ncu_txt.get_center() + 2 * UP),
+                             FadeOut(utbm_group),
+                             FadeOut(ncu_group))
+
         self.seb_resume.wait(3)
 
         scale_txt = 0.75
@@ -151,16 +152,16 @@ class Education:
 
         # REMOVE EDUCATION
         self.seb_resume.play(FadeOut(utbm_txt),
-                  FadeOut(ncu_txt),
-                  FadeOut(separate_line),
-                  FadeOut(programming_basics),
-                  FadeOut(mathematics_txt),
-                  FadeOut(management_txt),
-                  FadeOut(marketing_txt),
-                  FadeOut(machine_learning_txt),
-                  FadeOut(deep_learning_txt),
-                  FadeOut(nlp_txt),
-                  FadeOut(ir_txt))
+                             FadeOut(ncu_txt),
+                             FadeOut(separate_line),
+                             FadeOut(programming_basics),
+                             FadeOut(mathematics_txt),
+                             FadeOut(management_txt),
+                             FadeOut(marketing_txt),
+                             FadeOut(machine_learning_txt),
+                             FadeOut(deep_learning_txt),
+                             FadeOut(nlp_txt),
+                             FadeOut(ir_txt))
 
         self.seb_resume.wait(3)
 
@@ -170,4 +171,3 @@ class Education:
 
         self.seb_resume.play(Transform(self.seb_resume.transition['current_title'], experience_title))
         self.seb_resume.wait(3)
-        

@@ -25,7 +25,7 @@ class SebExperience:
         self.introduce_job_position("Research Intern - Orange Labs", '(Feb. 2019 - August 2019)')
 
     def introduce_job_position(self, title_string, period_string, is_first=0):
-        experience_title = TextMobject("\\textit{ " +title_string +"}")
+        experience_title = TextMobject("\\textit{ " + title_string +"}")
         experience_title.scale(0.7)
         experience_title.set_color(YELLOW_C)
 
