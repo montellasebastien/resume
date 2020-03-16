@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from experience import SebExperience
 from education import Education
+from introduction import Introduce
 from manimlib.imports import *
 import numpy as np
 
@@ -24,37 +25,12 @@ class SebResume(Scene):
         # self.contact()
 
     def self_introduction(self):
-        name = TextMobject('Sebastien Montella')
-        job = TextMobject('\\textit{Machine Learning \& Deep Learning Researcher}')
-        education_title = TextMobject('Education')
-        job.set_color(BLUE)
-        education_title.set_color(YELLOW)
+        my_name = 'Sebastien Montella'
+        my_job = 'Machine Learning \\& Deep Learning Researcher'
 
-        my_pic = ImageMobject('seb_circle_logo_color.png')
-        my_pic.scale(0.60)
-
-        name.next_to(my_pic, DOWN)
-        job.next_to(name, DOWN)
-
-        name_group = VGroup(name,
-                            job)
-
-        self.play(FadeIn(my_pic, run_time=2),
-                  FadeIn(name, run_time=2))
-
-        self.wait(3)
-        self.play(Write(job, run_time=2.5))
-        self.wait(3)
-        self.play(ApplyMethod(my_pic.to_corner, UL, run_time=1.1),
-                  ApplyMethod(name_group.to_corner, UP, run_time=1.3))
-        self.wait(3)
-        education_title.move_to(job.get_center())
-        self.play(ReplacementTransform(job, education_title))
-        self.wait(3)
-
-        # UPDATE TRANSITION TITLE DICT
-        self.transition['current_title'] = education_title
-        self.transition['current_title_position'] = education_title.get_center()
+        introduce_seb = Introduce(self)
+        introduce_seb.introducing(my_name_string=my_name,
+                                  my_job_string=my_job)
 
     def education(self):
         my_education = Education(self)
