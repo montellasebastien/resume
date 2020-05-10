@@ -5,8 +5,10 @@ import numpy as np
 
 
 class SebExperience:
-    def __init__(self, seb_resume):
+    def __init__(self, seb_resume, title='Experience', color=BLUE):
         self.seb_resume = seb_resume
+        self.seb_resume.apply_transition(title=title,
+                                         color=color)
         self.current_experience_title = None
         self.current_experience_year = None
         self.current_group = None
@@ -28,6 +30,7 @@ class SebExperience:
         new_group = VGroup(experience_title,
                            experience_year)
 
+
         if is_first:
             self.current_experience_title = experience_title
             self.current_experience_year = experience_year
@@ -38,6 +41,8 @@ class SebExperience:
             self.seb_resume.play(ApplyMethod(new_group.move_to,
                                              self.seb_resume.transition['current_title_position'] + DOWN))
             self.seb_resume.wait(3)
+
+
         else:
             new_group.move_to(self.seb_resume.transition['current_title_position'] + DOWN)
             self.seb_resume.play(ReplacementTransform(self.current_group, new_group))
@@ -48,7 +53,7 @@ class SebExperience:
             self.current_experience_year = experience_year
             self.current_group = new_group
 
-    def widm_lab(self, is_first=0):
+    def widm_lab(self, is_first=0, is_last=0):
 
         self.introduce_job_position("Research Assistant - WIDM Lab", '(2016-2019)', is_first=is_first)
 
@@ -85,10 +90,12 @@ class SebExperience:
                              FadeOut(ir_chatbot_object),
                              FadeOut(rec_sys_object),
                              FadeOut(emotional_machine))
+        if is_last:
+            self.seb_resume.play(FadeOut(self.current_group))
         self.seb_resume.wait(1.5)
 
-    def orange_intern(self):
-        self.introduce_job_position("Research Intern - Orange Labs", '(Feb. 2019 - August 2019)')
+    def orange_intern(self, is_first=0, is_last=0):
+        self.introduce_job_position("Research Intern - Orange Labs", '(Feb. 2019 - August 2019)', is_first=is_first)
 
         in_out_classification = self.create_experience("$\\cdot \\text{ Indoor-Outdoor Classification in 5G context}$", size=0.80)
         in_out_classification.move_to(self.current_experience_year.get_center() + 1.5 * DOWN)
@@ -105,6 +112,9 @@ class SebExperience:
         # REMOVING THE OBJECTS
         self.seb_resume.play(FadeOut(in_out_classification),
                              FadeOut(nlp_intern))
+        if is_last:
+            self.seb_resume.play(FadeOut(self.current_group))
+
         self.seb_resume.wait(1.5)
 
     def create_experience(self, text, size=0.80, color=WHITE):
@@ -112,5 +122,7 @@ class SebExperience:
         description.scale(size)
         description.set_color(color)
         return description
+
+
 
 

@@ -4,8 +4,10 @@ from manimlib.imports import *
 
 
 class Education:
-    def __init__(self, seb_resume):
+    def __init__(self, seb_resume, title='Education', color=YELLOW):
         self.seb_resume = seb_resume
+        self.seb_resume.apply_transition(title=title,
+                                         color=color)
 
     def show_universities(self):
 
@@ -165,9 +167,4 @@ class Education:
 
         self.seb_resume.wait(3)
 
-        experience_title = TextMobject('Experience')
-        experience_title.set_color(BLUE)
-        experience_title.move_to(self.seb_resume.transition['current_title_position'])
 
-        self.seb_resume.play(Transform(self.seb_resume.transition['current_title'], experience_title))
-        self.seb_resume.wait(3)
