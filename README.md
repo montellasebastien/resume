@@ -9,6 +9,6 @@
 </h4>
 
 <p align="center">
-<img src='preview.gif' width=300 class="center">
+<img src='preview.gif' width=500 class="center">
 </p>
 
